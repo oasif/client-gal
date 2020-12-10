@@ -1,0 +1,28 @@
+.art-card {
+  flex: 1;
+  box-sizing: border-box;
+  -webkit-box-flex: 1;
+  -ms-box-flex: 1;
+  -moz-box-flex: 1;
+  padding: 3px 3px 3px 3px;
+  width:350px;
+
+}
+
+.art-image {
+  
+}
+
+.mat-card-header {
+  
+
+  height: 100%;
+  width: 100%;
+}
+img{
+    height: 250px;
+    width: 250px;
+}
+button{
+  border : hidden;
+}

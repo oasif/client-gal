@@ -1,0 +1,100 @@
+<form [formGroup]="registerArtForm" (ngSubmit)="onSubmit()">
+    <mat-card class="registration-card">
+        <mat-card-header>
+
+            <mat-card-title>Art Registration</mat-card-title>
+
+        </mat-card-header>
+
+        <mat-card-content>
+            <mat-form-field class="example-full-width">
+                <mat-label>Gallery Image</mat-label>
+                <ngx-mat-file-input formControlName="imageFile" placeholder="Select Image"
+                    valuePlaceholder="No image file selected" [errorStateMatcher]="matcher"></ngx-mat-file-input>
+                <mat-icon matSuffix>folder</mat-icon>
+                <mat-error>
+                    <span *ngIf="!registerArtForm.get('imageFile').valid">Please select image file</span>
+                </mat-error>
+            </mat-form-field>
+            <div class="form-group">
+                <mat-form-field>
+                    <input matInput placeholder="pieceName" type="text" formControlName="pieceName" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.pieceName.errors }">
+                    <mat-hint *ngIf="submitted && f.pieceName.errors">
+                        <mat-hint *ngIf="f.pieceName.errors.required">Piece Name is required</mat-hint>
+                        <mat-hint *ngIf="f.pieceName.errors.pattern">Piece Nameis using illegal characters.</mat-hint>
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <input matInput placeholder="Tags, comma separted" type="text" formControlName="tagList"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tagList.errors }">
+                    <mat-hint *ngIf="submitted && f.tagList.errors">
+                        <mat-hint *ngIf="f.tagList.errors.required">Tags is required</mat-hint>
+                        <mat-hint *ngIf="f.tagList.errors.pattern">Tags is using illegal characters.</mat-hint>
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <input matInput placeholder="Created date" type="date" formControlName="createdDate"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.createdDate.errors }">
+                    <mat-hint *ngIf="submitted && f.createdDate.errors">
+                        <mat-hint *ngIf="f.createdDate.errors.required">created Date is required</mat-hint>
+                        <mat-hint *ngIf="f.createdDate.errors.pattern">created Date is typed with errors.</mat-hint>
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <input matInput placeholder="imageLink" type="text" formControlName="imageLink" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.imageLink.errors }">
+                    <mat-hint *ngIf="submitted && f.medium.errors">
+                        <mat-hint *ngIf="f.imageLink.errors.required">imageLink is required</mat-hint>
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <input matInput placeholder="artistName" type="text" formControlName="artistName"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.artistName.errors }">
+                    <mat-hint *ngIf="submitted && f.artistName.errors">
+                        <mat-hint *ngIf="f.artistName.errors.required">artistName is required</mat-hint>
+
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <input matInput placeholder="medium" type="text" formControlName="medium" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.medium.errors }">
+                    <mat-hint *ngIf="submitted && f.medium.errors">
+                        <mat-hint *ngIf="f.medium.errors.required">medium is required</mat-hint>
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <input matInput placeholder="pieceInfo" type="text" formControlName="pieceInfo" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.pieceInfo.errors }">
+                    <mat-hint *ngIf="submitted && f.pieceInfo.errors">
+                        <mat-hint *ngIf="f.pieceInfo.errors.required">pieceInfo is required</mat-hint>
+                        <mat-hint *ngIf="f.pieceInfo.errors.minlength">pieceInfo must be at least 6 characters.
+                        </mat-hint>
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+
+        </mat-card-content>
+        <mat-card-actions>
+
+            <button mat-button [disabled]="loading">Save</button>
+            <!--      <img class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />-->
+            <button mat-button routerLink="/home">Cancel</button>
+            <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
+
+        </mat-card-actions>
+    </mat-card>
+
+</form>

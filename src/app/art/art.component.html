@@ -1,0 +1,50 @@
+<mat-card class="art-card">
+  <mat-card-header>
+    <div mat-card-avatar class="art-image"></div>
+
+    <mat-card-title-group>
+      <mat-card-title><img src={{art.imageLink}}></mat-card-title>
+      <mat-card-title>{{art.pieceName}}</mat-card-title>
+      <mat-card-subtitle>Created by: {{art.artistName}} on {{art.createdDate | date}}</mat-card-subtitle>
+      <!--<mat-card-subtitle>Ends on {{art.endDate | date}}</mat-card-subtitle> -->
+      <mat-card-subtitle>{{art.medium}}</mat-card-subtitle>
+      <mat-card-subtitle>{{art.likeTotal}}</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-title-group>
+
+    </mat-card-title-group>
+    <div fxFlex></div>
+
+
+
+
+  </mat-card-header>
+  <!--    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+  <mat-card-content>
+    <p>
+      {{art.pieceInfo}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+
+    <!--    TODO: look at HW4 and modify the buttons in a way where users only see the 'view button' if they are registered for the art. creators will only see 'view'
+           Clicking View will invoke differnt functions inside home.component.ts depending on whether it was clicked by creator or user.
+-->
+    <button mat-menu-item (click)="viewPicturePage(art._id)">
+      <mat-icon>visibility</mat-icon>
+      <span>View picture</span>
+    </button>
+    <button mat-menu-item *ngIf="art.favorited== false" (click)="fav(art._id)">
+      <mat-icon>star_border</mat-icon>
+    </button>
+    <button mat-menu-item *ngIf="art.favorited" (click)="unfav(art._id)">
+      <mat-icon>star</mat-icon>
+    </button>
+    <mat-icon fontSet="material-icons-outlined" *ngIf="art.liked== false" (click)="like(art._id)"
+      aria-label="Example thumbs up SVG icon">thumb_up_outline</mat-icon>
+
+    <mat-icon *ngIf="art.liked" (click)="unlike(art._id)" aria-label="Example thumbs up SVG icon">thumb_up</mat-icon>
+
+
+  </mat-card-actions>
+</mat-card>

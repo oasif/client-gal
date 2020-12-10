@@ -1,0 +1,21 @@
+<mat-toolbar *ngIf="isUser">
+
+<!--TODO- Done: show the greeter with username-->
+  <p> Hi {{currentUser.username}}</p>
+   
+  <button mat-button routerLink="/">Home</button>
+
+  <button mat-button routerLink="/admin" *ngIf="isCreator" >Creator Page</button>
+   
+   
+
+<form (submit)="onSubmit()">
+  <input (input)="tcode=$event.target.value" type="text"  placeholder="Search.." >
+</form>
+
+
+
+  <button mat-button (click)="logout()">Logout </button>
+
+</mat-toolbar>
+<router-outlet></router-outlet>
