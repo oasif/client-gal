@@ -1,30 +1,19 @@
-# HW2
+# Gallery in angular 10
+See associated server-gal project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+# Steps
+* first do: npm upgrade  // this will install the packages from packages.json into the node_module directory
+* install nodemon globally: npm install -g nodemon // this will run npm start and will refresh the server when changes are detected
 
 ## References
 https://www.djamware.com/post/5f0533338ce55338fd15aca3/mean-stack-angular-10-tutorial-upload-image-file
+
+To make it earier to develop I use the following VS Code plugins:
+* Prettier - Code formatter
+* Bracket Pair Colorizer 2
+* There are also database plugins to manage the DB (like the azure databases) but I have not install it 
+
+I also make sure that autosave is enabled
+* settings > search for autosave > from the dropdown select onFocusChage
+
+
